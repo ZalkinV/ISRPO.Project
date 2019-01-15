@@ -41,7 +41,8 @@ namespace ISRPO.Project
 			commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
 			var menuCommandTrackingId = new CommandID(CommandSet, CommandTrackingId);
-			var menuCommandTracking = new MenuCommand(this.Execute, menuCommandTrackingId);
+			var menuCommandTracking = new OleMenuCommand(this.Execute, menuCommandTrackingId);
+            menuCommandTracking.BeforeQueryStatus += new EventHandler(TimeTracking.OnClick);
 			commandService.AddCommand(menuCommandTracking);
 		}
 

@@ -65,6 +65,9 @@
       <Button guid="guidTimeTrackerPackageCmdSet" id="ButtonTrackingId" priority="0x0100" type="Button">
         <Parent guid="guidTimeTrackerPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
+        
+        <CommandFlag>TextChanges</CommandFlag>
+        
         <Strings>
           <ButtonText>Start tracking</ButtonText>
         </Strings>
