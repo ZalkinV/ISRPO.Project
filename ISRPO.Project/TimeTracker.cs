@@ -40,9 +40,9 @@ namespace ISRPO.Project
 			this.package = package ?? throw new ArgumentNullException(nameof(package));
 			commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
-			var menuCommandID = new CommandID(CommandSet, CommandTrackingId);
-			var menuItem = new MenuCommand(this.Execute, menuCommandID);
-			commandService.AddCommand(menuItem);
+			var menuCommandTrackingId = new CommandID(CommandSet, CommandTrackingId);
+			var menuCommandTracking = new MenuCommand(this.Execute, menuCommandTrackingId);
+			commandService.AddCommand(menuCommandTracking);
 		}
 
 		/// <summary>
