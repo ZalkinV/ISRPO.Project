@@ -41,9 +41,8 @@ namespace ISRPO.Project
 			commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
 			var menuCommandTrackingId = new CommandID(CommandSet, CommandTrackingId);
-			var menuCommandTracking = new OleMenuCommand(this.Execute, menuCommandTrackingId);
-            menuCommandTracking.BeforeQueryStatus += new EventHandler(TimeTracking.OnClick);
-			commandService.AddCommand(menuCommandTracking);
+            var menuCommandTracking = new OleMenuCommand(TimeTracking.OnClick, menuCommandTrackingId);
+            commandService.AddCommand(menuCommandTracking);
 		}
 
 		/// <summary>
@@ -78,29 +77,6 @@ namespace ISRPO.Project
 
 			OleMenuCommandService commandService = await package.GetServiceAsync((typeof(IMenuCommandService))) as OleMenuCommandService;
 			Instance = new TimeTracker(package, commandService);
-		}
-
-		/// <summary>
-		/// This function is the callback used to execute the command when the menu item is clicked.
-		/// See the constructor to see how the menu item is associated with this function using
-		/// OleMenuCommandService service and MenuCommand class.
-		/// </summary>
-		/// <param name="sender">Event sender.</param>
-		/// <param name="e">Event args.</param>
-		private void Execute(object sender, EventArgs e)
-		{
-			ThreadHelper.ThrowIfNotOnUIThread();
-			string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-			string title = "TimeTracker";
-
-			// Show a message box to prove we were here
-			VsShellUtilities.ShowMessageBox(
-				this.package,
-				message,
-				title,
-				OLEMSGICON.OLEMSGICON_INFO,
-				OLEMSGBUTTON.OLEMSGBUTTON_OK,
-				OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 		}
 	}
 }
