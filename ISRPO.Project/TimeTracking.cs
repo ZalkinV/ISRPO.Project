@@ -9,10 +9,25 @@ namespace ISRPO.Project
 {
     class TimeTracking
     {
+        private static bool isTracking = false;
+
         public static void OnClick(object sender, EventArgs e)
         {
             var command = sender as OleMenuCommand;
-            command.Text = "Clicked!";
+            SwitchButton(command);
+        }
+
+        private static void SwitchButton(OleMenuCommand button)
+        {
+            isTracking = !isTracking;
+            if (isTracking)
+            {
+                button.Text = "Stop tracking";
+            }
+            else
+            {
+                button.Text = "Start tracking";
+            }
         }
     }
 }

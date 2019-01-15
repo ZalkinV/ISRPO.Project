@@ -67,6 +67,7 @@
         <Icon guid="guidImages" id="bmpPic1" />
         
         <CommandFlag>TextChanges</CommandFlag>
+        <CommandFlag>DontCache</CommandFlag>
         
         <Strings>
           <ButtonText>Start tracking</ButtonText>
