@@ -17,7 +17,7 @@ namespace ISRPO.Project
 		/// <summary>
 		/// Command ID.
 		/// </summary>
-		public const int CommandId = 0x0100;
+		public const int CommandTrackingId = 0x0100;
 
 		/// <summary>
 		/// Command menu group (command set GUID).
@@ -40,7 +40,7 @@ namespace ISRPO.Project
 			this.package = package ?? throw new ArgumentNullException(nameof(package));
 			commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
-			var menuCommandID = new CommandID(CommandSet, CommandId);
+			var menuCommandID = new CommandID(CommandSet, CommandTrackingId);
 			var menuItem = new MenuCommand(this.Execute, menuCommandID);
 			commandService.AddCommand(menuItem);
 		}

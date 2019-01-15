@@ -62,7 +62,7 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
-      <Button guid="guidTimeTrackerPackageCmdSet" id="TimeTrackerId" priority="0x0100" type="Button">
+      <Button guid="guidTimeTrackerPackageCmdSet" id="ButtonTrackingId" priority="0x0100" type="Button">
         <Parent guid="guidTimeTrackerPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
@@ -90,7 +90,7 @@
     <GuidSymbol name="guidTimeTrackerPackageCmdSet" value="{6e2485ba-73f3-43db-aa3e-b857dad78672}">
       <IDSymbol name="TimeTrackerMenu" value="0x1100" />
       <IDSymbol name="MyMenuGroup" value="0x1020" />
-      <IDSymbol name="TimeTrackerId" value="0x0100" />
+      <IDSymbol name="ButtonTrackingId" value="0x0100" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{200b9bea-e0eb-4bba-b07d-b5a22006dff5}" >
