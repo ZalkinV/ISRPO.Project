@@ -37,7 +37,8 @@ namespace ISRPO.Project
 	[ProvideMenuResource("Menus.ctmenu", 1)]
 	[Guid(TimeTrackerPackage.PackageGuidString)]
 	[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
-	public sealed class TimeTrackerPackage : AsyncPackage
+    [ProvideAutoLoad(UIContextGuids.NoSolution, PackageAutoLoadFlags.BackgroundLoad)]
+    public sealed class TimeTrackerPackage : AsyncPackage
 	{
 		/// <summary>
 		/// TimeTrackerPackage GUID string.
