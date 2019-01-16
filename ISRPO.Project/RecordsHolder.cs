@@ -28,6 +28,26 @@ namespace ISRPO.Project
 			Records.Add(record.DateTime, record);
 		}
 
+		public void ReadRecords()
+		{
+			using (StreamReader sr = new StreamReader(FilePath))
+			{
+				string line;
+				while ((line = sr.ReadLine()) != null)
+				{
+					string[] fields = line.Split(Record.FieldSeparator.ToCharArray());
+
+					Record newRecord = new Record(
+						DateTime.Parse(fields[0]),
+						Convert.ToBoolean(fields[1]),
+						(ProcessType)Enum.Parse(typeof(ProcessType), fields[2])
+					);
+
+					AddRecord(newRecord);
+				}
+			}
+		}
+
 		public void WriteRecords()
 		{
 			using (StreamWriter sw = new StreamWriter(FilePath, false))
