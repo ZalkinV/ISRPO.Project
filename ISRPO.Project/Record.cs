@@ -13,7 +13,7 @@ namespace ISRPO.Project
 		public DateTime DateTime { get; }
 		public bool IsTracking { get; }
 		public ProcessType Process { get; }
-
+		public static string FieldSeparator { get; } = ",";
 
 		public Record(bool isTracking)
 		{
@@ -38,7 +38,7 @@ namespace ISRPO.Project
 
 		public override string ToString()
 		{
-			return string.Join(",", DateTime.ToString(), IsTracking, Process);
+			return string.Join(FieldSeparator, DateTime.ToString(), IsTracking, Process);
 		}
 	}
 }
