@@ -14,12 +14,12 @@ namespace ISRPO.Project
 		public RecordsHolder()
 		{
 			FilePath = "./TimeTracker.txt";
+			Records = new SortedList<DateTime, Record>();
 		}
 
-		public RecordsHolder(string filePath)
+		public RecordsHolder(string filePath) : this()
 		{
 			FilePath = filePath;
-			Records = new SortedList<DateTime, Record>();
 		}
 	}
 }
