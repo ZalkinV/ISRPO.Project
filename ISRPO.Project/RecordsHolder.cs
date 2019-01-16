@@ -10,5 +10,16 @@ namespace ISRPO.Project
 	{
 		private string FilePath { get; }
 		private SortedList<DateTime, Record> Records { get; }
+
+		public RecordsHolder()
+		{
+			FilePath = "./TimeTracker.txt";
+		}
+
+		public RecordsHolder(string filePath)
+		{
+			FilePath = filePath;
+			Records = new SortedList<DateTime, Record>();
+		}
 	}
 }
