@@ -8,5 +8,7 @@ namespace ISRPO.Project
 {
 	class RecordsHolder
 	{
+		private string FilePath { get; }
+		private SortedList<DateTime, Record> Records { get; }
 	}
 }
