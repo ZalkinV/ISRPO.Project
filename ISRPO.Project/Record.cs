@@ -15,18 +15,24 @@ namespace ISRPO.Project
 		public ProcessType Process { get; }
 
 
-		public Record() { }
-
-		public Record(DateTime dateTime, bool isTracking)
+		public Record(bool isTracking)
 		{
-			DateTime = dateTime;
+			DateTime = DateTime.Now;
 			IsTracking = isTracking;
 		}
 
-		public Record(DateTime dateTime, bool isTracking, ProcessType processType)
+		public Record(bool isTracking, ProcessType processType) : this(isTracking)
+		{
+			Process = processType;
+		}
+
+		public Record(DateTime dateTime, bool isTracking) : this(isTracking)
 		{
 			DateTime = dateTime;
-			IsTracking = isTracking;
+		}
+
+		public Record(DateTime dateTime, bool isTracking, ProcessType processType) : this(dateTime, isTracking)
+		{
 			Process = processType;
 		}
 	}
