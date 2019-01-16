@@ -8,5 +8,9 @@ namespace ISRPO.Project
 {
 	class ChartShowing
 	{
+		public static void OnClick(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
