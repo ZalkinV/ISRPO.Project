@@ -62,5 +62,15 @@ namespace ISRPO.Project
 			}
 			Records.Clear();
 		}
+
+		~RecordsHolder()
+		{
+			if (Records.Last().Value.IsTracking)
+			{
+				AddRecord(new Record(false));
+			}
+
+			WriteRecords();
+		}
 	}
 }
