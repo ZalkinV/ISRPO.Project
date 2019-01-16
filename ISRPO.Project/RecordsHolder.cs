@@ -21,5 +21,10 @@ namespace ISRPO.Project
 		{
 			FilePath = filePath;
 		}
+
+		public void AddRecord(Record record)
+		{
+			Records.Add(record.DateTime, record);
+		}
 	}
 }
