@@ -73,6 +73,14 @@
           <ButtonText>Start tracking</ButtonText>
         </Strings>
       </Button>
+
+      <Button guid="guidTimeTrackerPackageCmdSet" id="ButtonShowChartId" priority="0x0150" type="Button">
+        <Parent guid="guidTimeTrackerPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPicSearch"/>
+        <Strings>
+          <ButtonText>Show chart</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -95,6 +103,7 @@
       <IDSymbol name="TimeTrackerMenu" value="0x1100" />
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="ButtonTrackingId" value="0x0100" />
+      <IDSymbol name="ButtonShowChartId" value="0x0101" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{200b9bea-e0eb-4bba-b07d-b5a22006dff5}" >

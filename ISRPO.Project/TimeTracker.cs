@@ -18,6 +18,7 @@ namespace ISRPO.Project
 		/// Command ID.
 		/// </summary>
 		public const int CommandTrackingId = 0x0100;
+		public const int CommandShowChartId = 0x0101;
 
 		/// <summary>
 		/// Command menu group (command set GUID).
@@ -42,7 +43,12 @@ namespace ISRPO.Project
 
 			var menuCommandTrackingId = new CommandID(CommandSet, CommandTrackingId);
             var menuCommandTracking = new OleMenuCommand(TimeTracking.OnClick, menuCommandTrackingId);
+
+			var menuCommandShowGraphId = new CommandID(CommandSet, CommandShowChartId);
+			var menuCommandShowGraph = new OleMenuCommand(ChartShowing.OnClick, menuCommandShowGraphId);
+
             commandService.AddCommand(menuCommandTracking);
+			commandService.AddCommand(menuCommandShowGraph);
 		}
 
 		/// <summary>
