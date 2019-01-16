@@ -11,6 +11,7 @@ namespace ISRPO.Project
 	{
 		private string FilePath { get; }
 		private SortedList<DateTime, Record> Records { get; }
+		private int LastRecordInFileIndex = 0;
 
 		public RecordsHolder()
 		{
@@ -44,19 +45,22 @@ namespace ISRPO.Project
 					);
 
 					AddRecord(newRecord);
+					LastRecordInFileIndex++;
 				}
 			}
 		}
 
 		public void WriteRecords()
 		{
-			using (StreamWriter sw = new StreamWriter(FilePath, false))
+			using (StreamWriter sw = new StreamWriter(FilePath, true))
 			{
-				foreach (var record in Records)
+				foreach (var record in Records.Skip(LastRecordInFileIndex))
 				{
 					sw.WriteLine(record.Value);
+					LastRecordInFileIndex++;
 				}
 			}
+			Records.Clear();
 		}
 	}
 }
