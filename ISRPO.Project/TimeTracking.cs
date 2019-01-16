@@ -11,13 +11,11 @@ namespace ISRPO.Project
 	{
 		private static bool isTracking = false;
 
-		private static RecordsHolder records = new RecordsHolder();
-
 		public static void OnClick(object sender, EventArgs e)
 		{
 			var command = sender as OleMenuCommand;
 			SwitchButton(command);
-			records.AddRecord(new Record(isTracking));
+			TimeTracker.Records.AddRecord(new Record(isTracking));
 		}
 
 		private static void SwitchButton(OleMenuCommand button)

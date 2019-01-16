@@ -14,6 +14,8 @@ namespace ISRPO.Project
 	/// </summary>
 	internal sealed class TimeTracker
 	{
+		public static RecordsHolder Records;
+
 		/// <summary>
 		/// Command ID.
 		/// </summary>
@@ -40,6 +42,8 @@ namespace ISRPO.Project
 		{
 			this.package = package ?? throw new ArgumentNullException(nameof(package));
 			commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
+
+			Records = new RecordsHolder();
 
 			var menuCommandTrackingId = new CommandID(CommandSet, CommandTrackingId);
             var menuCommandTracking = new OleMenuCommand(TimeTracking.OnClick, menuCommandTrackingId);
