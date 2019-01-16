@@ -35,5 +35,10 @@ namespace ISRPO.Project
 		{
 			Process = processType;
 		}
+
+		public override string ToString()
+		{
+			return string.Join(",", DateTime.ToString(), IsTracking, Process);
+		}
 	}
 }
