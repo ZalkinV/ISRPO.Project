@@ -15,6 +15,8 @@ namespace ISRPO.Project
 			Form chartForm = new Form
 			{
 				Text = "Work Chart",
+				Height = 400,
+				Width = 400,
 			};
 
 			Chart chart = new Chart
@@ -23,10 +25,22 @@ namespace ISRPO.Project
 				Dock = DockStyle.Fill,
 			};
 
+			ChartArea chartArea = new ChartArea("AreaWorkingHours");
+			chartArea.AxisX.Title = "Dates";
+			chartArea.AxisY.Title = "Hours";
+
 			chart.Titles.Add("Working Hours");
+			chart.ChartAreas.Add(chartArea);
 
 			TimeTracker.Records.ReadRecords();
 			Dictionary<string, double> hoursInDay = GetDatesSeries(TimeTracker.Records);
+
+			Series series = new Series("SeriesWorkingHours");
+			series.ChartArea = "AreaWorkingHours";
+			series.Points.DataBindXY(hoursInDay.Keys, hoursInDay.Values);
+			series.IsValueShownAsLabel = true;
+			series["Points Width"] = "1";
+			chart.Series.Add(series);
 
 			chartForm.Show();
 		}
