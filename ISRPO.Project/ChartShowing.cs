@@ -26,24 +26,52 @@ namespace ISRPO.Project
 			chart.Titles.Add("Working Hours");
 
 			TimeTracker.Records.ReadRecords();
-			List<string> seriesNames = GetDates(TimeTracker.Records);
+			Dictionary<string, double> hoursInDay = GetDatesSeries(TimeTracker.Records);
 
 			chartForm.Show();
 		}
 
-		private static List<string> GetDates(RecordsHolder records)
+		private static Dictionary<string, double> GetDatesSeries(RecordsHolder records)
 		{
-			List<string> result = new List<string>();
-			DateTime prevDate = DateTime.MinValue.Date;
+			var result = new Dictionary<string, double>();
 
-			foreach (var record in records.Records)
+			Record prevRecord = records.Records.Values.ElementAt(0);
+			string newKey = prevRecord.DateTime.ToString("d");
+			double newValue = 0;
+
+			int trackingBorder = 0;
+
+			foreach (var curRecord in records.Records.Values)
 			{
-				DateTime curDate = record.Key.Date;
-				if (prevDate != curDate)
+				if (curRecord.IsTracking) { trackingBorder++; }
+				else { trackingBorder--; }
+
+				if (prevRecord.DateTime.Date != curRecord.DateTime.Date)
 				{
-					result.Add(record.Key.ToString("d"));
-					prevDate = curDate;
+					newKey = curRecord.DateTime.ToString("d");
 				}
+
+				if (trackingBorder != 1)
+				{
+					TimeSpan timeSpan = curRecord.DateTime.Subtract(prevRecord.DateTime);
+					newValue += timeSpan.TotalHours;
+				}
+
+				if (trackingBorder == 0)
+				{
+					newValue = Math.Round(newValue, 3);
+					if (result.ContainsKey(newKey))
+					{
+						result[newKey] += newValue;
+					}
+					else
+					{
+						result.Add(newKey, newValue);
+					}
+					newValue = 0;
+				}
+
+				prevRecord = curRecord;
 			}
 			return result;
 		}
