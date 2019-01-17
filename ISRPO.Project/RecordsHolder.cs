@@ -10,7 +10,7 @@ namespace ISRPO.Project
 	class RecordsHolder
 	{
 		private string FilePath { get; }
-		private SortedList<DateTime, Record> Records { get; }
+		public SortedList<DateTime, Record> Records { get; }
 		private int LastRecordInFileIndex = 0;
 
 		public RecordsHolder()

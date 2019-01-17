@@ -25,7 +25,27 @@ namespace ISRPO.Project
 
 			chart.Titles.Add("Working Hours");
 
+			TimeTracker.Records.ReadRecords();
+			List<string> seriesNames = GetDates(TimeTracker.Records);
+
 			chartForm.Show();
+		}
+
+		private static List<string> GetDates(RecordsHolder records)
+		{
+			List<string> result = new List<string>();
+			DateTime prevDate = DateTime.MinValue.Date;
+
+			foreach (var record in records.Records)
+			{
+				DateTime curDate = record.Key.Date;
+				if (prevDate != curDate)
+				{
+					result.Add(record.Key.ToString("d"));
+					prevDate = curDate;
+				}
+			}
+			return result;
 		}
 	}
 }
